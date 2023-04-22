@@ -1,12 +1,22 @@
 import React from 'react';
+import { Box, Container } from '@mui/material';
 import CalendarView from './components/CalendarView';
-import './styles/App.css';
 
 const App: React.FC = () => {
   return (
-    <div className="App">
-      <CalendarView />
-    </div>
+    <Box
+      style={{
+        alignItems: 'center',
+        backgroundColor: '#EBF3FE',
+        display: 'flex',
+        justifyContent: 'center',
+        minHeight: '100vh'
+      }}
+    >
+      <Container>
+        <CalendarView />
+      </Container>
+    </Box>
   );
 }
 
