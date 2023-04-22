@@ -7,26 +7,13 @@ const CalendarView: React.FC = () => {
     <Grid
       container
       spacing={0}
-      alignItems="center"
-      justifyContent="space-between"
-      style={{ backgroundColor: 'white', borderRadius: '40px' }}
+      style={{ alignItems: 'center', backgroundColor: 'white', borderRadius: '40px', justifyContent: 'space-between', }}
     >
       <Grid item xs={6} style={{ padding: '40px'}}>
         <Box sx={{ alignItems: 'center', display: 'flex', justifyContent: 'space-between' }}>
           <h3>Friday, August 26, 2022</h3>
 
-          <Button
-            variant="contained"
-            style={{
-              background: 'linear-gradient(90deg, #FF465D 0%, #BC46BA 100%)', 
-              boxShadow: '0px 4px 28px 2px #D1DCF0',
-              borderRadius: '4px',
-              fontSize: '16px',
-              fontWeight: '600',
-              height: '49px',
-              textTransform: 'none',
-            }}
-          >
+          <Button variant="contained">
             Add reminder
           </Button>
         </Box>
