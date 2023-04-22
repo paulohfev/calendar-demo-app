@@ -2,19 +2,12 @@ import React from 'react';
 import { Box, Container, ThemeProvider } from '@mui/material';
 import { theme } from './theme';
 import CalendarView from './components/CalendarView';
+import { BoxStyles } from './AppStyles';
 
 const App: React.FC = () => {
   return (
     <ThemeProvider theme={theme}>
-      <Box
-        style={{
-          alignItems: 'center',
-          backgroundColor: '#EBF3FE',
-          display: 'flex',
-          justifyContent: 'center',
-          minHeight: '100vh'
-        }}
-      >
+      <Box style={BoxStyles}>
         <Container>
           <CalendarView />
         </Container>

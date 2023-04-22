@@ -1,0 +1,16 @@
+.date-header {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.grid-container {
+  align-items: center;
+  background-color: white;
+  border-radius: 40px;
+  justify-content: space-between;
+
+  .grid-item {
+    padding: 40px;
+  }
+}
