@@ -1,0 +1,64 @@
+.container {
+  color: white;
+
+  .month-navigation-buttons {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 26px;
+
+    .navigation-button {
+      height: 24px;
+      padding: 0;
+      min-width: fit-content;
+      width: 24px;
+    }
+
+    .navigation-icon {
+      height: 18px;
+      width: 18px;
+    }
+
+    .navigation-separator {
+      height: 6px;
+      margin: 0 4px;
+      width: 6px;
+    }
+  }
+
+  .week-day {
+    font-family: 'Lato';
+    font-size: 12px;
+    padding: 10px;
+    text-transform: uppercase;
+  }
+  
+  .calendar-day {
+    cursor: pointer;
+    font-family: 'Lato';
+    font-size: 18px;
+    font-weight: 600;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .year-title {
+    font-family: 'Lato';
+    font-size: 80px;
+    font-weight: 800;
+    margin: 0;
+    text-align: center;
+  }
+  
+  .month-title {
+    font-family: 'Lato';
+    font-size: 45px;
+    font-weight: 600;
+    margin: 0 0 60px;
+    text-align: center;
+  }
+  
+  .calendar-table {
+    margin: 0 auto;
+  }
+}
