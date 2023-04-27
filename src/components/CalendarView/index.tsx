@@ -13,12 +13,10 @@ const CalendarView: React.FC = () => {
       spacing={0}
     >
       <Grid item xs={6} className={styles['grid-item']}>
-        <div className={styles['date-header']}>
-          <h3>Friday, August 26, 2022</h3>
+        <div className={styles.header}>
+          <h3 className={styles['date-header']}>Friday, August 26, 2022</h3>
 
-          <Button variant="contained">
-            Add reminder
-          </Button>
+          <Button variant="contained">Add reminder</Button>
         </div>
 
         <img src={NoReminder} alt="No Reminder Empty State" />
