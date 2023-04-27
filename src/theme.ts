@@ -7,12 +7,17 @@ export const theme = createTheme({
         {
           props: {},
           style: {
-            boxShadow: '0px 4px 28px 2px #D1DCF0',
             borderRadius: '4px',
+            textTransform: 'none',
+          }
+        },
+        {
+          props: { variant: 'contained' },
+          style: {
+            boxShadow: '0px 4px 28px 2px #D1DCF0',
             fontSize: '16px',
             fontWeight: '600',
             height: '49px',
-            textTransform: 'none',
           }
         },
         {
@@ -31,6 +36,12 @@ export const theme = createTheme({
           props: { variant: 'contained', color: 'neutral' },
           style: {
             backgroundColor: '#626262',
+          }
+        },
+        {
+          props: { variant: 'ghost' },
+          style: {
+            boxShadow: '0',
           }
         }
       ]

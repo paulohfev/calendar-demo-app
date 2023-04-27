@@ -1,5 +1,7 @@
 import React from 'react';
 import { Button, Grid } from '@mui/material';
+import classNames from 'classnames';
+import Calendar from '../Calendar';
 import styles from './CalendarView.module.scss';
 import NoReminder from '../../assets/images/no-reminders.png';
 
@@ -22,8 +24,8 @@ const CalendarView: React.FC = () => {
         <img src={NoReminder} alt="No Reminder Empty State" />
       </Grid>
 
-      <Grid item xs={4} className={styles['grid-item']}>
-        <div>CALENDAR</div>
+      <Grid item xs={6} className={classNames(styles['grid-item'], styles['calendar-item'])}>
+        <Calendar />
       </Grid>
     </Grid>
   );
