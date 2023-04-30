@@ -43,7 +43,7 @@ const Calendar: React.FC = () => {
 
     for (let i = 0; i < totalSlots.length; i++) {
       // checks for every 7 items in the totalSlots list.
-      if (i % 7 == 0) {
+      if (i % 7 === 0) {
         // extracts every 7 items and places them in a new array.
         const row = totalSlots.slice(rowCount, i + 7)
         rows.push(row);
@@ -59,17 +59,25 @@ const Calendar: React.FC = () => {
     return daysInMonth;
   };
 
+  const backTrackOneMonth = () => {
+    setDateObject(moment(dateObject).subtract(1, 'months'));
+  }
+
+  const forwardOneMonth = () => {
+    setDateObject(moment(dateObject).add(1, 'months'));
+  }
+
   return (
     <div className={styles['container']}>
       <h1 className={styles['year-title']}>{currentYear}</h1>
       <h3 className={styles['month-title']}>{currentMonth}</h3>
 
       <div className={styles['month-navigation-buttons']}>
-        <Button className={styles['navigation-button']} variant="ghost">
+        <Button className={styles['navigation-button']} onClick={() => backTrackOneMonth()} variant="ghost">
           <ArrowBackIos color="white" className={styles['navigation-icon']} />
         </Button>
         <Circle className={styles['navigation-separator']} />
-        <Button className={styles['navigation-button']} variant="ghost">
+        <Button className={styles['navigation-button']} onClick={() => forwardOneMonth()} variant="ghost">
           <ArrowForwardIos color="white" className={styles['navigation-icon']} />
         </Button>
       </div>
