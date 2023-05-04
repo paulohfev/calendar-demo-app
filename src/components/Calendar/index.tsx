@@ -1,14 +1,21 @@
-import React, { useState } from 'react';
+import React from 'react';
+import moment from 'moment';
+import classNames from 'classnames';
 import { Button } from '@mui/material';
 import { ArrowBackIos, ArrowForwardIos, Circle } from '@mui/icons-material';
-import moment from 'moment';
 import styles from './Calendar.module.scss';
 
-const Calendar: React.FC = () => {
-  const [dateObject, setDateObject] = useState(moment());
+type Props = {
+  dateObject: moment.Moment;
+  handleSelectedDate: (T: moment.Moment) => void;
+  selectedDate: moment.Moment;
+  setDateObject: (T: moment.Moment) => void;
+}
 
+const Calendar: React.FC<Props> = ({ dateObject, handleSelectedDate, selectedDate, setDateObject }) => {
   const firstDayOfMonth = Number(dateObject.startOf("month").format("d"));
-  const currentMonth = dateObject.format('MMMM');
+  const currentMonthName = dateObject.format('MMMM');
+  const currentMonthNumber = dateObject.format('MM');
   const currentYear = dateObject.format('YYYY')
   const weekDays = moment.weekdaysShort();
 
@@ -29,8 +36,19 @@ const Calendar: React.FC = () => {
   const getDaysList = () => {
     let daysInMonth = [];
     for (let d = 1; d <= dateObject.daysInMonth(); d++) {
+      const formattedDay = () => d.toString().length === 1 ? `0${d}` : `${d}`;
+      const isDaySelected = selectedDate.date() === d;
+
       daysInMonth.push(
-        <td key={`day-${d}`} className={styles["calendar-day"]}>{d}</td>
+        <td
+          key={`day-${d}`}
+          className={styles["calendar-day"]}
+          onClick={() => handleSelectedDate(
+            moment(`${currentYear}-${currentMonthNumber}-${formattedDay()}`)
+          )}
+        >
+          <div className={classNames({ [styles['selected-calendar-day']]: isDaySelected })}>{d}</div>
+        </td>
       );
     }
     return daysInMonth;
@@ -70,7 +88,7 @@ const Calendar: React.FC = () => {
   return (
     <div className={styles['container']}>
       <h1 className={styles['year-title']}>{currentYear}</h1>
-      <h3 className={styles['month-title']}>{currentMonth}</h3>
+      <h3 className={styles['month-title']}>{currentMonthName}</h3>
 
       <div className={styles['month-navigation-buttons']}>
         <Button className={styles['navigation-button']} onClick={() => backTrackOneMonth()} variant="ghost">

@@ -1,29 +1,42 @@
-import React from 'react';
-import { Button, Grid } from '@mui/material';
+import React, { useEffect, useState } from 'react';
+import moment from 'moment';
+import { Grid } from '@mui/material';
 import classNames from 'classnames';
 import Calendar from '../Calendar';
+import Reminders from '../Reminders';
 import styles from './CalendarView.module.scss';
-import NoReminder from '../../assets/images/no-reminders.png';
+
+const momentData: moment.Moment = moment();
 
 const CalendarView: React.FC = () => {
+  const [dateObject, setDateObject] = useState(momentData);
+  const [selectedDate, setSelectedDate] = useState(momentData);
+
+  useEffect(() => {
+    setSelectedDate(dateObject);
+  }, [dateObject]);
+
+  const handleSelectedDate = (selectedDate: moment.Moment) => {
+    setSelectedDate(selectedDate);
+  }
+
   return (
     <Grid
       className={styles['grid-container']}
       container
       spacing={0}
     >
-      <Grid item xs={6} className={styles['grid-item']}>
-        <div className={styles.header}>
-          <h3 className={styles['date-header']}>Friday, August 26, 2022</h3>
-
-          <Button variant="contained">Add reminder</Button>
-        </div>
-
-        <img src={NoReminder} alt="No Reminder Empty State" />
+      <Grid item xs={7} className={styles['grid-item']}>
+        <Reminders selectedDate={selectedDate} />
       </Grid>
 
-      <Grid item xs={6} className={classNames(styles['grid-item'], styles['calendar-item'])}>
-        <Calendar />
+      <Grid item xs={5} className={classNames(styles['grid-item'], styles['calendar-item'])}>
+        <Calendar
+          dateObject={dateObject}
+          handleSelectedDate={handleSelectedDate}
+          selectedDate={selectedDate}
+          setDateObject={setDateObject}
+        />
       </Grid>
     </Grid>
   );
